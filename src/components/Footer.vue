@@ -2,6 +2,7 @@
   <div class="bg-base-200">
     <div class="container mx-auto p-8">
       <a
+        class="italic"
         href="https://www.flaticon.com/free-icons/list"
         title="list icons"
         target="_blank"

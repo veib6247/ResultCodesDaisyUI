@@ -36,13 +36,13 @@
         <!-- head -->
         <thead>
           <tr>
-            <th>Code</th>
-            <th>Description</th>
+            <th class="text-sky-400 text-lg">Code</th>
+            <th class="text-sky-400 text-lg">Description</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="result in result.data.resultCodes" class="hover">
-            <td>{{ result.code }}</td>
+            <td class="font-mono">{{ result.code }}</td>
             <td>{{ result.description }}</td>
           </tr>
         </tbody>
