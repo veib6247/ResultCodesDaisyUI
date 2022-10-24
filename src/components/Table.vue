@@ -1,5 +1,7 @@
 <script setup>
   import { reactive, onMounted } from 'vue'
+
+  import csvDownload from 'json-to-csv-export'
   // the one variable to rule them all
   const result = reactive({
     url: 'https://eu-test.oppwa.com/v1/resultcodes',
@@ -27,9 +29,34 @@
   onMounted(() => {
     fetchList()
   })
+
+  /**
+   * parse JSON into CSV and download to client
+   */
+  function exportCSV() {
+    try {
+      const dataToConvert = {
+        data: result.data.resultCodes,
+        filename: 'result_codes',
+        delimiter: ',',
+        headers: ['Code', 'Description'],
+      }
+
+      // dl!
+      csvDownload(dataToConvert)
+    } catch (error) {
+      console(error)
+    }
+  }
 </script>
 
 <template>
+  <Transition>
+    <div class="pb-8" v-if="result.data">
+      <button class="btn btn-primary" @click="exportCSV">Export to CSV</button>
+    </div>
+  </Transition>
+
   <Transition>
     <div class="overflow-x-auto" v-if="result.data">
       <table class="table table-zebra w-full">
