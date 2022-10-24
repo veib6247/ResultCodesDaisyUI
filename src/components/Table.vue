@@ -45,7 +45,7 @@
       // dl!
       csvDownload(dataToConvert)
     } catch (error) {
-      console(error)
+      console.error(error)
     }
   }
 </script>
